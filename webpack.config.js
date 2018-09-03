@@ -8,18 +8,33 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
   mode:'production'
   ,entry: {
-      index:'./src/index.js' 
+      index:'./src/index.js',
+      login:'./src/login.js' 
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js'
+    filename: 'static/[name].bundle.js'
   },
   plugins:[
+
         new CleanWebpackPlugin(['dist']),
+
         new HtmlWebpackPlugin({
             title: 'Output Management',
-            template: 'src/index.html'
+            template: 'pages/index.html',
+            chunks:["index"],
+            filename:"index.html",
+            inject:"head"
+        }) ,
+
+        new HtmlWebpackPlugin({
+            title: 'Login Page ',
+            template:'pages/login.html',
+            filename:"login.html",
+            chunks:["login"],
+            inject:"head"
         }) 
+
   ],
   module: {
     rules: [
