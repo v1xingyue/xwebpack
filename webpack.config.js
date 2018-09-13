@@ -9,12 +9,14 @@ module.exports = {
   mode:'production'
   ,entry: {
       index:'./src/index.js',
+      vue:'./src/vue.js',
       login:'./src/login.js' 
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'static/[name].bundle.js'
   },
+  resolve: { alias: { 'vue': 'vue/dist/vue.js' } },
   plugins:[
 
         new CleanWebpackPlugin(['dist']),
@@ -25,6 +27,15 @@ module.exports = {
             chunks:["index"],
             filename:"index.html",
             inject:"head"
+        }) ,
+
+        new HtmlWebpackPlugin({
+            title: 'Vue Management',
+            template: 'pages/vue.html',
+            chunks:["vue"],
+            filename:"vue.html",
+            // 必须为body ,否则页面不渲染
+            inject:"body"
         }) ,
 
         new HtmlWebpackPlugin({
