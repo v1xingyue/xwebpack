@@ -1,7 +1,7 @@
 const jq = require("jquery");
 
 jq(function(){
-    alert("---- ------");
+    console.log("---- ------");
 });
 
 export default function printMe() {
