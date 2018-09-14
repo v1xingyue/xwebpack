@@ -1,0 +1,6 @@
+添加vim vue 插件:
+https://github.com/posva/vim-vue
+
+....
+Plug 'posva/vim-vue'
+....
