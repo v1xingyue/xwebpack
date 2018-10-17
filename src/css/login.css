@@ -1,0 +1,27 @@
+.main{
+    margin-top:150px;
+}
+
+div.main .hide {
+    display:none;
+}
+
+.card-content {
+    padding:3rem ;
+}
+
+
+.card{
+    border-radius:0.5rem;
+}
+
+html {
+    height:100%;
+}
+body{
+    background-image:url('./image/bg.jpg');
+    background-size:cover;
+    height:100%;
+}
+
+

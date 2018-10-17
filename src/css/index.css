@@ -1,9 +1,80 @@
-.hello{
-    color:red;
-    text-align:center;
-}
-
 body{
-    background-color:#EEE;
+    text-align:center;
+    padding:0 8px;
 }
 
+a.navbar-item strong {
+    margin-left:1rem;
+}
+
+
+.mt1 {
+    margin-top:5px;
+}
+
+.mt2 {
+    margin-top:10px;
+}
+
+.mt3 {
+    margin-top:15px;
+}
+
+.mt4 {
+    margin-top:20px;
+}
+
+.ml1 {
+    margin-left:5px;
+}
+
+.ml2 {
+    margin-left:10px;
+}
+
+.ml3 {
+    margin-left:15px;
+}
+.notification.is-primary.u-modify {
+    padding: 0.5rem 2.5rem 0.5rem 1.5rem;
+    border-radius: 0px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.notification.is-warning.u-modify {
+    padding: 0.5rem 2.5rem 0.5rem 1.5rem;
+    border-radius: 0px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.has-text-u0{
+    color:#a44bb7;
+    font-size:1.2rem;
+}
+
+.column.card.ml3{
+    min-height:700px;
+}
+
+
+footer.footer{
+    padding:2rem 1.5rem 2rem;
+}
+
+.text-align-left{
+    text-align:left;
+}
+
+div.echitem{
+    width:600px;
+    height:400px;
+}
+
+div.piebox{
+    margin:1rem;
+}
+.container.is-fluid.card.u-modify {
+    margin: 15px;
+}

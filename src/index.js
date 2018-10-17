@@ -1,20 +1,40 @@
-import _ from 'lodash';
-import "bulma/css/bulma.min.css";
+import Vue from  'vue';
+import VueRouter from 'vue-router';
+import store from './store.js';
+
+import Buefy from 'buefy'
+import 'buefy/dist/buefy.css'
+import "./css/fontawesome-free-5.3.1/css/all.min.css";
 import './css/index.css';
-import printMe from "./components/print.js";
-const jq = require("jquery");
+import axios from 'axios';
+import router from './router.js';
 
-function component() {
-  var element = document.createElement('div');
-  element.innerHTML = _.join(['Hello', 'this is ' ,'webpack'], ' ');
-  element.classList.add("hello");
-  element.classList.add("item");
-  element.onclick = printMe;
+//axios.defaults.baseURL = "http://your.host.com/api";
+axios.defaults.baseURL = "/api";
+axios.defaults.headers.common['xinfo'] = 'somexinfoheader';
 
-  return element;
-}
-
-
-jq(function(){
-    document.body.appendChild(component());
+var num = 0
+axios.interceptors.request.use(function (config) {  //在请求发出之前进行一些操作
+    num++
+    store.commit("loading",true);
+    return config
 });
+
+axios.interceptors.response.use(function(response){
+    num--;
+    if(num <=0){
+        store.commit("loading",false);
+    } else {
+        store.commit("loading",true);
+    }
+    return response;
+});
+
+Vue.prototype.$axios = axios;
+
+Vue.use(Buefy)
+
+const app = new Vue({
+    router,
+    store
+}).$mount('#main');
