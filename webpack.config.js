@@ -4,6 +4,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const {VueLoaderPlugin} = require('vue-loader');
+const RsyncPlugin = require('./rsync.js');
 
 module.exports = {
   //mode:'production'
@@ -18,8 +19,13 @@ module.exports = {
   resolve: { alias: { 'vue': 'vue/dist/vue.js' } },
   plugins:[
       
-        new CleanWebpackPlugin(['../public/pages']),
         new VueLoaderPlugin(),
+
+        new CleanWebpackPlugin(['dist']),
+        //使用rsync 同步代码
+        new RsyncPlugin({
+            cmd:'rsync -avzq ../public/pages/ 10.212.0.101::pages/' 
+        }),
 
         new HtmlWebpackPlugin({
             title: 'Sina Hids Center ',
