@@ -3,6 +3,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const RsyncPlugin = require('./rsync.js');
 
 
 module.exports = {
@@ -20,6 +21,10 @@ module.exports = {
   plugins:[
 
         new CleanWebpackPlugin(['dist']),
+        //使用rsync 同步代码
+        new RsyncPlugin({
+            cmd:'rsync -avzq ../public/pages/ 10.212.0.101::pages/' 
+        }),
 
         new HtmlWebpackPlugin({
             title: 'Output Management',
